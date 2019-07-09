@@ -1,0 +1,68 @@
+{
+  "Atom": {
+    "Name": "Atom",
+    "Description": "Keep track of all Atom packages installed",
+    "Command": "apm list --installed bare",
+    "Filename": "atom.txt"
+  },
+  "Brew": {
+    "Name": "Brew",
+    "Description": "Keep track of all brew packages installed",
+    "Command": "brew leaves",
+    "Filename": "brew.txt"
+  },
+  "Git": {
+    "Name": "Git",
+    "Description": "/Users/harshkhajuria/Desktop/PotatoBackup",
+    "Command": "",
+    "Filename": ""
+  },
+  "Sublime": {
+    "Name": "Sublime",
+    "Description": "Keep track of all sublime packages installed",
+    "Command": "ls /Users/harshkhajuria/Library/Application\\ Support/Sublime\\ Text\\ 3/Packages",
+    "Filename": "Sublime"
+  },
+  "macosApps": {
+    "Name": "macosApps",
+    "Description": "Keep track of macOS apps installed",
+    "Command": "ls /Applications",
+    "Filename": "macos.txt"
+  },
+  "npm": {
+    "Name": "npm",
+    "Description": "Keep track of all npm packages installed ",
+    "Command": "npm list --g --depth 0",
+    "Filename": "npm.txt"
+  },
+  "pip": {
+    "Name": "pip",
+    "Description": "Kepp track of all pip packages installed",
+    "Command": "pip3 freeze",
+    "Filename": "pip.txt"
+  },
+  "sublime": {
+    "Name": "sublime",
+    "Description": "sublime",
+    "Command": "ls /Users/harshkhajuria/Library/Application\\ Support/Sublime\\ Text\\ 3/Packages",
+    "Filename": "sublime.txt"
+  },
+  "vimrc": {
+    "Name": "vimrc",
+    "Description": "Vim config backup",
+    "Command": "cat /Users/harshkhajuria/.vimrc",
+    "Filename": ".vimrc"
+  },
+  "vscode": {
+    "Name": "vscode",
+    "Description": "Keep track of vscode extensions",
+    "Command": "code --list-extensions",
+    "Filename": "vscode.txt"
+  },
+  "zsh": {
+    "Name": "zsh",
+    "Description": "zsh config backup",
+    "Command": "cat /Users/harshkhajuria/.zshrc",
+    "Filename": ".zshrc"
+  }
+}

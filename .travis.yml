@@ -1,0 +1,27 @@
+# @Author: harshkhajuria
+# @Date:   10-Jul-2019 04:24:54 am
+# @Email:  khajuriaharsh729@gmail.com
+# @Filename: .travis.yml
+# @Last modified by:   harshkhajuria
+# @Last modified time: 10-Jul-2019 04:25:47 am
+
+
+language: go
+
+go: '1.12.x'
+
+env:
+  - "PATH=/home/travis/gopath/bin:$PATH"
+
+install: true
+
+script:
+  - env GO111MODULE=on go build -v
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: curl -sL https://git.io/goreleaser | bash
+    on:
+      tags: true
+      condition: $TRAVIS_OS_NAME = linux
