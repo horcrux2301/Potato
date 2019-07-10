@@ -3,7 +3,7 @@
 # @Email:  khajuriaharsh729@gmail.com
 # @Filename: .goreleaser.yml
 # @Last modified by:   harshkhajuria
-# @Last modified time: 10-Jul-2019 04:45:43 am
+# @Last modified time: 11-Jul-2019 03:33:27 am
 
 
 # This is an example goreleaser.yaml file with some sane defaults.
@@ -28,3 +28,14 @@ changelog:
     exclude:
     - '^docs:'
     - '^test:'
+brew:
+  github:
+    owner: horcrux2301
+    name: homebrew-tap
+  folder: Formula
+  description: "Potato is a command line tool which helps you to keep the development configs and settings of your Mac as a programmer safe in your GitHub."
+  install: |
+    bin.install "Potato"
+
+  test: |
+    system "#{bin}/Potato --version"
