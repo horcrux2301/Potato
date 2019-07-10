@@ -8,6 +8,12 @@ can later use to set up a new machine. Also, Potato is fully configurable so you
 
 Because it seems exciting to develop something in Golang.
 
+## Installing Potato?
+
+Make sure Go is installed in your system.
+
+To install run - `go get github.com/horcrux2301/Potato`
+
 ## Using Potato
 
 1. Add a setting
