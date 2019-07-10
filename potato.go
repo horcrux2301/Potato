@@ -4,7 +4,7 @@
  * @Email:  khajuriaharsh729@gmail.com
  * @Filename: potato.go
  * @Last modified by:   harshkhajuria
- * @Last modified time: 10-Jul-2019 07:01:44 am
+ * @Last modified time: 10-Jul-2019 07:09:30 am
  */
 
 package main
@@ -38,12 +38,12 @@ func reader(toRead string) string {
 
 func readJson() {
 
-  dir, direrr := os.Getwd()
-  if direrr != nil {
-    fmt.Println(direrr)
+	dir, direrr := os.UserHomeDir()
+	if direrr != nil {
+		fmt.Println(direrr)
 		return
-  }
-  dir = dir + "/settings.json"
+	}
+	dir = dir + "/settings.json"
 	fi, fierr := os.Stat(dir)
 	if fierr != nil {
 		fmt.Println(fierr)
@@ -71,12 +71,12 @@ func writeJson() {
 	if err != nil {
 		fmt.Println(err)
 	}
-  dir, direrr := os.Getwd()
-  if direrr != nil {
-    fmt.Println(direrr)
-    return
-  }
-  dir = dir + "/settings.json"
+	dir, direrr := os.UserHomeDir()
+	if direrr != nil {
+		fmt.Println(direrr)
+		return
+	}
+	dir = dir + "/settings.json"
 	_ = ioutil.WriteFile(dir, file, 0644)
 }
 
