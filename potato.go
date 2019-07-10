@@ -4,7 +4,7 @@
  * @Email:  khajuriaharsh729@gmail.com
  * @Filename: potato.go
  * @Last modified by:   harshkhajuria
- * @Last modified time: 10-Jul-2019 08:49:08 am
+ * @Last modified time: 10-Jul-2019 08:55:52 am
  */
 
 package main
@@ -103,7 +103,7 @@ func writeJson() {
 }
 
 func addSettingsHelper() {
-	tempName := reader("Enter a name for the setting(1 to 10 characters) ")
+	tempName := reader("Enter a name for the setting ")
 	_, ok := settings[tempName]
 	if ok == true {
 		fmt.Println("The given key already exists")
@@ -285,8 +285,8 @@ func main() {
 
 	app.EnableBashCompletion = true
 	app.Name = "Potato"
-	app.Usage = "Keep track of your system as a developer"
-
+	app.Usage = "Keep track of your MacOS as a developer"
+  app.Version = "0.0.1"
 	settings = make(map[string]Setting)
 
 	app.Flags = []cli.Flag{}
@@ -296,7 +296,7 @@ func main() {
 			Name:  "add",
 			Usage: "Add a setting",
 			Action: func(c *cli.Context) error {
-				fmt.Println("Add a setting : ")
+				fmt.Println("Add a setting")
 				addSetting()
 				return nil
 			},
@@ -305,7 +305,7 @@ func main() {
 			Name:  "delete",
 			Usage: "Delete a setting",
 			Action: func(c *cli.Context) error {
-				fmt.Println("Delete a setting : ")
+				fmt.Println("Delete a setting")
 				tempName := reader("Enter the name of the string to be deleted: ")
 				readJson()
 				deleteSetting(tempName)
@@ -316,7 +316,7 @@ func main() {
 			Name:  "display",
 			Usage: "Display all settings",
 			Action: func(c *cli.Context) error {
-				fmt.Println("Display all settings : ")
+				fmt.Println("Display all settings")
 				readJson()
 				displaySettings()
 				return nil
@@ -326,7 +326,7 @@ func main() {
 			Name:  "run",
 			Usage: "Run the package",
 			Action: func(c *cli.Context) error {
-				fmt.Println("Creating backup : ")
+				fmt.Println("Creating backup")
 				readJson()
 				runSettings()
 				return nil
@@ -344,7 +344,7 @@ func main() {
 	}
 
 	app.Action = func(c *cli.Context) error {
-		fmt.Println("Running potato")
+		fmt.Println("Run potato --help to see all available options")
 		return nil
 	}
 
