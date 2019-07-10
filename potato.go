@@ -4,7 +4,7 @@
  * @Email:  khajuriaharsh729@gmail.com
  * @Filename: potato.go
  * @Last modified by:   harshkhajuria
- * @Last modified time: 10-Jul-2019 08:41:26 am
+ * @Last modified time: 10-Jul-2019 08:49:08 am
  */
 
 package main
@@ -36,12 +36,22 @@ func reader(toRead string) string {
 	return inputText
 }
 
+func exists(path string) (bool, error) {
+	_, err := os.Stat(path)
+	if err == nil {
+		return true, nil
+	}
+	if os.IsNotExist(err) {
+		return false, nil
+	}
+	return true, err
+}
+
 func createSettingsFile(dir string) {
-	_, err := os.Stat(dir)
-	check := os.IsExist(err)
-	if check == false {
+	ok , _ := exists(dir)
+	if ok == false {
 		fmt.Println("The settings.json file does not exist. Creating it.")
-		_, err = os.Create(dir)
+		_ , err := os.Create(dir)
 		if err != nil {
 			fmt.Println("Error creating file")
 		}
@@ -115,17 +125,6 @@ func addSetting() {
 	readJson()
 	addSettingsHelper()
 	writeJson()
-}
-
-func exists(path string) (bool, error) {
-	_, err := os.Stat(path)
-	if err == nil {
-		return true, nil
-	}
-	if os.IsNotExist(err) {
-		return false, nil
-	}
-	return true, err
 }
 
 func deleteSetting(key string) {
