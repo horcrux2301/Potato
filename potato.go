@@ -4,7 +4,7 @@
  * @Email:  khajuriaharsh729@gmail.com
  * @Filename: potato.go
  * @Last modified by:   harshkhajuria
- * @Last modified time: 10-Jul-2019 09:05:15 am
+ * @Last modified time: 10-Jul-2019 09:14:32 am
  */
 
 package main
@@ -103,11 +103,11 @@ func writeJson() {
 }
 
 func addSettingsHelper() {
-	tempName := reader("Enter a name for the setting (can't be empty)")
+	tempName := reader("Enter a name for the setting (can't be empty) ")
   tempNameLen := len([]rune(tempName))
   if tempNameLen == 0 {
     for tempNameLen == 0 {
-      tempName = reader("Enter a name for the setting (can't be empty)")
+      tempName = reader("Enter a name for the setting (can't be empty) ")
       tempNameLen = len([]rune(tempName))
     }
   }
@@ -117,11 +117,11 @@ func addSettingsHelper() {
 		return
 	}
 	tempDescription := reader("Enter a short description for the setting (can be empty) ")
-	tempCommand := reader("Enter the command that needs to be executed for this setting (can't be empty)")
+	tempCommand := reader("Enter the command that needs to be executed for this setting (can't be empty) ")
   tempCommandLen := len([]rune(tempCommand))
   if tempCommandLen == 0 {
     for tempCommandLen == 0 {
-      tempCommand = reader("Enter the command that needs to be executed for this setting (can't be empty)")
+      tempCommand = reader("Enter the command that needs to be executed for this setting (can't be empty) ")
       tempCommandLen = len([]rune(tempCommand))
     }
   }
@@ -330,7 +330,7 @@ func main() {
 			Name:  "display",
 			Usage: "Display all settings",
 			Action: func(c *cli.Context) error {
-				fmt.Println("ALL settings \n")
+				fmt.Println("All settings \n")
 				readJson()
 				displaySettings()
 				return nil
