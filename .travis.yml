@@ -3,7 +3,7 @@
 # @Email:  khajuriaharsh729@gmail.com
 # @Filename: .travis.yml
 # @Last modified by:   harshkhajuria
-# @Last modified time: 10-Jul-2019 04:25:47 am
+# @Last modified time: 10-Jul-2019 07:58:27 pm
 
 
 language: go
@@ -13,7 +13,8 @@ go: '1.12.x'
 env:
   - "PATH=/home/travis/gopath/bin:$PATH"
 
-install: true
+install:
+  - go get github.com/urfave/cli
 
 script:
   - env GO111MODULE=on go build -v
