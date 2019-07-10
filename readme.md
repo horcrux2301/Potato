@@ -14,6 +14,8 @@ Make sure Go is installed in your system.
 
 To install run - `go get github.com/horcrux2301/Potato`
 
+Or you can use [Homebrew](https://brew.sh) - `brew install horcrux2301/tap/Potato`
+
 ## Using Potato
 
 1. Add a setting
@@ -54,6 +56,8 @@ To install run - `go get github.com/horcrux2301/Potato`
 You can refer [here](https://github.com/horcrux2301/Potato/blob/master/SettingsDemo.json) to get an idea of settings that you might want to add to Potato.
 
 Backup of my personal system - [Github Repo](https://github.com/horcrux2301/Potato-Backup)
+
+The `settings.json` file is stored by default as `$HOME/settings.json`.
 
 ## Suggestions/Issue ?
 
