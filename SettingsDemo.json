@@ -21,7 +21,7 @@
     "Name": "Sublime",
     "Description": "Keep track of all sublime packages installed",
     "Command": "ls /Users/harshkhajuria/Library/Application\\ Support/Sublime\\ Text\\ 3/Packages",
-    "Filename": "Sublime"
+    "Filename": "sublime.txt"
   },
   "macosApps": {
     "Name": "macosApps",
@@ -40,12 +40,6 @@
     "Description": "Kepp track of all pip packages installed",
     "Command": "pip3 freeze",
     "Filename": "pip.txt"
-  },
-  "sublime": {
-    "Name": "sublime",
-    "Description": "sublime",
-    "Command": "ls /Users/harshkhajuria/Library/Application\\ Support/Sublime\\ Text\\ 3/Packages",
-    "Filename": "sublime.txt"
   },
   "vimrc": {
     "Name": "vimrc",
