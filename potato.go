@@ -4,7 +4,7 @@
  * @Email:  khajuriaharsh729@gmail.com
  * @Filename: potato.go
  * @Last modified by:   harshkhajuria
- * @Last modified time: 10-Jul-2019 08:55:52 am
+ * @Last modified time: 10-Jul-2019 09:05:15 am
  */
 
 package main
@@ -103,14 +103,28 @@ func writeJson() {
 }
 
 func addSettingsHelper() {
-	tempName := reader("Enter a name for the setting ")
+	tempName := reader("Enter a name for the setting (can't be empty)")
+  tempNameLen := len([]rune(tempName))
+  if tempNameLen == 0 {
+    for tempNameLen == 0 {
+      tempName = reader("Enter a name for the setting (can't be empty)")
+      tempNameLen = len([]rune(tempName))
+    }
+  }
 	_, ok := settings[tempName]
 	if ok == true {
 		fmt.Println("The given key already exists")
 		return
 	}
 	tempDescription := reader("Enter a short description for the setting (can be empty) ")
-	tempCommand := reader("Enter the command that needs to be executed for this setting ")
+	tempCommand := reader("Enter the command that needs to be executed for this setting (can't be empty)")
+  tempCommandLen := len([]rune(tempCommand))
+  if tempCommandLen == 0 {
+    for tempCommandLen == 0 {
+      tempCommand = reader("Enter the command that needs to be executed for this setting (can't be empty)")
+      tempCommandLen = len([]rune(tempCommand))
+    }
+  }
 	tempFilename := reader("Enter the filename in whih these settings will be saved. If empty name of the setting will be used. ")
 	tempFileNameLen := len([]rune(tempFilename))
 	if tempFileNameLen == 0 {
@@ -316,7 +330,7 @@ func main() {
 			Name:  "display",
 			Usage: "Display all settings",
 			Action: func(c *cli.Context) error {
-				fmt.Println("Display all settings")
+				fmt.Println("ALL settings \n")
 				readJson()
 				displaySettings()
 				return nil
@@ -344,7 +358,7 @@ func main() {
 	}
 
 	app.Action = func(c *cli.Context) error {
-		fmt.Println("Run potato --help to see all available options")
+		fmt.Println("Run 'potato --help' to see all available options")
 		return nil
 	}
 
