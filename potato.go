@@ -4,7 +4,7 @@
  * @Email:  khajuriaharsh729@gmail.com
  * @Filename: potato.go
  * @Last modified by:   harshkhajuria
- * @Last modified time: 10-Jul-2019 05:02:31 am
+ * @Last modified time: 10-Jul-2019 07:01:44 am
  */
 
 package main
@@ -38,7 +38,13 @@ func reader(toRead string) string {
 
 func readJson() {
 
-	fi, fierr := os.Stat("settings.json")
+  dir, direrr := os.Getwd()
+  if direrr != nil {
+    fmt.Println(direrr)
+		return
+  }
+  dir = dir + "/settings.json"
+	fi, fierr := os.Stat(dir)
 	if fierr != nil {
 		fmt.Println(fierr)
 		return
@@ -65,7 +71,13 @@ func writeJson() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	_ = ioutil.WriteFile("settings.json", file, 0644)
+  dir, direrr := os.Getwd()
+  if direrr != nil {
+    fmt.Println(direrr)
+    return
+  }
+  dir = dir + "/settings.json"
+	_ = ioutil.WriteFile(dir, file, 0644)
 }
 
 func addSettingsHelper() {
