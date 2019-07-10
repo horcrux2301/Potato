@@ -4,7 +4,7 @@
  * @Email:  khajuriaharsh729@gmail.com
  * @Filename: potato.go
  * @Last modified by:   harshkhajuria
- * @Last modified time: 10-Jul-2019 10:05:04 am
+ * @Last modified time: 10-Jul-2019 10:13:33 am
  */
 
 package main
@@ -125,7 +125,7 @@ func addSettingsHelper() {
 			tempCommandLen = len([]rune(tempCommand))
 		}
 	}
-	tempFilename := reader("Enter the filename in whih these settings will be saved. If empty name of the setting will be used. ")
+	tempFilename := reader("Enter the filename in whih these settings will be saved. If empty name of the setting will be used ")
 	tempFileNameLen := len([]rune(tempFilename))
 	if tempFileNameLen == 0 {
 		tempFilename = tempName

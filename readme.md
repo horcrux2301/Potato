@@ -2,13 +2,13 @@
 ## What is Potato?
 
 Potato is a command line tool which helps you to keep the development configs and settings of your Mac as a programmer/developer/coder safe in your GitHub that you
-can later use to set up a new machine. Also, Potato is fully configurable so you can add or delete any setting you want.
+can later use to set up a new machine. Also, Potato is fully configurable so you can track anything from your `.vimrc` to all pip packages installed in your system.
 
 ## Why GO?
 
 Because it seems exciting to develop something in Golang.
 
-## Installing Potato?
+## Installing Potato
 
 Make sure Go is installed in your system.
 
