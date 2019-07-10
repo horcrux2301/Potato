@@ -4,7 +4,7 @@
  * @Email:  khajuriaharsh729@gmail.com
  * @Filename: potato.go
  * @Last modified by:   harshkhajuria
- * @Last modified time: 10-Jul-2019 07:09:30 am
+ * @Last modified time: 10-Jul-2019 08:41:26 am
  */
 
 package main
@@ -36,15 +36,32 @@ func reader(toRead string) string {
 	return inputText
 }
 
-func readJson() {
+func createSettingsFile(dir string) {
+	_, err := os.Stat(dir)
+	check := os.IsExist(err)
+	if check == false {
+		fmt.Println("The settings.json file does not exist. Creating it.")
+		_, err = os.Create(dir)
+		if err != nil {
+			fmt.Println("Error creating file")
+		}
+	}
+}
 
+func getSettingsDir() string {
 	dir, direrr := os.UserHomeDir()
 	if direrr != nil {
 		fmt.Println(direrr)
-		return
 	}
 	dir = dir + "/settings.json"
-	fi, fierr := os.Stat(dir)
+  createSettingsFile(dir)
+	return dir
+}
+
+func readJson() {
+
+	filePath := getSettingsDir()
+	fi, fierr := os.Stat(filePath)
 	if fierr != nil {
 		fmt.Println(fierr)
 		return
@@ -54,7 +71,7 @@ func readJson() {
 		return
 	}
 
-	data, err := ioutil.ReadFile("settings.json")
+	data, err := ioutil.ReadFile(filePath)
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -71,13 +88,8 @@ func writeJson() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	dir, direrr := os.UserHomeDir()
-	if direrr != nil {
-		fmt.Println(direrr)
-		return
-	}
-	dir = dir + "/settings.json"
-	_ = ioutil.WriteFile(dir, file, 0644)
+	filePath := getSettingsDir()
+	_ = ioutil.WriteFile(filePath, file, 0644)
 }
 
 func addSettingsHelper() {
