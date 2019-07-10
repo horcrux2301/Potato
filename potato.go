@@ -4,7 +4,7 @@
  * @Email:  khajuriaharsh729@gmail.com
  * @Filename: potato.go
  * @Last modified by:   harshkhajuria
- * @Last modified time: 10-Jul-2019 09:14:32 am
+ * @Last modified time: 10-Jul-2019 10:05:04 am
  */
 
 package main
@@ -48,10 +48,10 @@ func exists(path string) (bool, error) {
 }
 
 func createSettingsFile(dir string) {
-	ok , _ := exists(dir)
+	ok, _ := exists(dir)
 	if ok == false {
 		fmt.Println("The settings.json file does not exist. Creating it.")
-		_ , err := os.Create(dir)
+		_, err := os.Create(dir)
 		if err != nil {
 			fmt.Println("Error creating file")
 		}
@@ -64,7 +64,7 @@ func getSettingsDir() string {
 		fmt.Println(direrr)
 	}
 	dir = dir + "/settings.json"
-  createSettingsFile(dir)
+	createSettingsFile(dir)
 	return dir
 }
 
@@ -104,13 +104,13 @@ func writeJson() {
 
 func addSettingsHelper() {
 	tempName := reader("Enter a name for the setting (can't be empty) ")
-  tempNameLen := len([]rune(tempName))
-  if tempNameLen == 0 {
-    for tempNameLen == 0 {
-      tempName = reader("Enter a name for the setting (can't be empty) ")
-      tempNameLen = len([]rune(tempName))
-    }
-  }
+	tempNameLen := len([]rune(tempName))
+	if tempNameLen == 0 {
+		for tempNameLen == 0 {
+			tempName = reader("Enter a name for the setting (can't be empty) ")
+			tempNameLen = len([]rune(tempName))
+		}
+	}
 	_, ok := settings[tempName]
 	if ok == true {
 		fmt.Println("The given key already exists")
@@ -118,13 +118,13 @@ func addSettingsHelper() {
 	}
 	tempDescription := reader("Enter a short description for the setting (can be empty) ")
 	tempCommand := reader("Enter the command that needs to be executed for this setting (can't be empty) ")
-  tempCommandLen := len([]rune(tempCommand))
-  if tempCommandLen == 0 {
-    for tempCommandLen == 0 {
-      tempCommand = reader("Enter the command that needs to be executed for this setting (can't be empty) ")
-      tempCommandLen = len([]rune(tempCommand))
-    }
-  }
+	tempCommandLen := len([]rune(tempCommand))
+	if tempCommandLen == 0 {
+		for tempCommandLen == 0 {
+			tempCommand = reader("Enter the command that needs to be executed for this setting (can't be empty) ")
+			tempCommandLen = len([]rune(tempCommand))
+		}
+	}
 	tempFilename := reader("Enter the filename in whih these settings will be saved. If empty name of the setting will be used. ")
 	tempFileNameLen := len([]rune(tempFilename))
 	if tempFileNameLen == 0 {
@@ -300,7 +300,7 @@ func main() {
 	app.EnableBashCompletion = true
 	app.Name = "Potato"
 	app.Usage = "Keep track of your MacOS as a developer"
-  app.Version = "0.0.1"
+	app.Version = "0.0.1"
 	settings = make(map[string]Setting)
 
 	app.Flags = []cli.Flag{}
