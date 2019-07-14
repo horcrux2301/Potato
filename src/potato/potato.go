@@ -4,10 +4,10 @@
  * @Email:  khajuriaharsh729@gmail.com
  * @Filename: potato.go
  * @Last modified by:   harshkhajuria
- * @Last modified time: 10-Jul-2019 07:26:51 pm
+ * @Last modified time: 15-Jul-2019 03:04:26 am
  */
 
-package main
+package potato
 
 import (
 	"bufio"
@@ -15,7 +15,6 @@ import (
 	"fmt"
 	"github.com/urfave/cli"
 	"io/ioutil"
-	"log"
 	"os"
 	"os/exec"
 	"strings"
@@ -103,11 +102,11 @@ func writeJson() {
 }
 
 func addSettingsHelper() {
-	tempName := reader("Enter a name for the setting (can't be empty) ")
+	tempName := reader("Enter a name for the setting (can't be empty): ")
 	tempNameLen := len([]rune(tempName))
 	if tempNameLen == 0 {
 		for tempNameLen == 0 {
-			tempName = reader("Enter a name for the setting (can't be empty) ")
+			tempName = reader("Enter a name for the setting (can't be empty): ")
 			tempNameLen = len([]rune(tempName))
 		}
 	}
@@ -116,16 +115,16 @@ func addSettingsHelper() {
 		fmt.Println("The given key already exists")
 		return
 	}
-	tempDescription := reader("Enter a short description for the setting (can be empty) ")
-	tempCommand := reader("Enter the command that needs to be executed for this setting (can't be empty) ")
+	tempDescription := reader("Enter a short description for the setting (can be empty): ")
+	tempCommand := reader("Enter the command that needs to be executed for this setting (can't be empty): ")
 	tempCommandLen := len([]rune(tempCommand))
 	if tempCommandLen == 0 {
 		for tempCommandLen == 0 {
-			tempCommand = reader("Enter the command that needs to be executed for this setting (can't be empty) ")
+			tempCommand = reader("Enter the command that needs to be executed for this setting (can't be empty): ")
 			tempCommandLen = len([]rune(tempCommand))
 		}
 	}
-	tempFilename := reader("Enter the filename in whih these settings will be saved. If empty name of the setting will be used ")
+	tempFilename := reader("Enter the filename in which these settings will be saved. If empty name of the setting will be used: ")
 	tempFileNameLen := len([]rune(tempFilename))
 	if tempFileNameLen == 0 {
 		tempFilename = tempName
@@ -260,6 +259,15 @@ func parseCommand(command string) []string {
 	return commands
 }
 
+func backUpUserSettings() {
+	filename := settings["Git"].Description + "/userSettings.json"
+	file, err := json.Marshal(settings)
+	if err != nil {
+		fmt.Println(err)
+	}
+	_ = ioutil.WriteFile(filename, file, 0644)
+}
+
 func runSettings() {
 	_, ok := settings["Git"]
 	if ok == false {
@@ -291,15 +299,16 @@ func runSettings() {
 		fmt.Println("Run git init and set a remote tracking in it to create GitHub backups")
 		return
 	}
+	backUpUserSettings()
 	gitPush(settings["Git"].Description)
 }
 
-func main() {
+func Run() (err error) {
 	app := cli.NewApp()
 
 	app.EnableBashCompletion = true
 	app.Name = "Potato"
-	app.Usage = "Keep track of your MacOS as a developer"
+	app.Usage = "Keep track of your MacOS configs and settings as a developer"
 	app.Version = "0.0.1"
 	settings = make(map[string]Setting)
 
@@ -320,7 +329,7 @@ func main() {
 			Usage: "Delete a setting",
 			Action: func(c *cli.Context) error {
 				fmt.Println("Delete a setting")
-				tempName := reader("Enter the name of the string to be deleted: ")
+				tempName := reader("Enter the name of the setting to be deleted: ")
 				readJson()
 				deleteSetting(tempName)
 				return nil
@@ -362,8 +371,5 @@ func main() {
 		return nil
 	}
 
-	err := app.Run(os.Args)
-	if err != nil {
-		log.Fatal(err)
-	}
+	return (app.Run(os.Args))
 }

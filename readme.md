@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/horcrux2301/Potato.svg?branch=master)](https://travis-ci.org/horcrux2301/Potato) [![Go Report Card](https://goreportcard.com/badge/github.com/horcrux2301/potato)](https://goreportcard.com/report/github.com/horcrux2301/potato) ![Stars](https://img.shields.io/github/stars/horcrux2301/Potato.svg) ![License](https://img.shields.io/github/license/horcrux2301/Potato.svg)
 
 ## What is Potato?
 
@@ -53,11 +54,13 @@ Or you can use [Homebrew](https://brew.sh) - `brew install horcrux2301/tap/Potat
 
 ![](https://i.imgur.com/nW6MGEI.gif)
 
-You can refer [here](https://github.com/horcrux2301/Potato/blob/master/SettingsDemo.json) to get an idea of settings that you might want to add to Potato.
+## Miscellaneous
 
-Backup of my personal system - [Github Repo](https://github.com/horcrux2301/Potato-Backup)
+1. You can refer [here](https://github.com/horcrux2301/Potato/blob/master/SettingsDemo.json) to get an idea of settings that you might want to add to Potato.
 
-The `settings.json` file is stored by default as `$HOME/settings.json`.
+2. Backup of my personal system - [Github Repo](https://github.com/horcrux2301/Potato-Backup)
+
+3. The `settings.json` file is stored by default as `$HOME/settings.json`.
 
 ## Suggestions/Issue ?
 
